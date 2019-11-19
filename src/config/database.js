@@ -1,5 +1,5 @@
 const node_env = process.env.NODE_ENV
-require('custom-env').env(node_env);
+// require('custom-env').env(node_env);
 
 module.exports = {
     dialect: 'postgres',
