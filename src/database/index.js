@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'production') {
     console.log('alo');
     conn = new Sequelize(process.env.DATABASE_URL, {
         dialect: 'postgres',
-        protocol: 'psotgres'
+        protocol: 'postgres'
     });
 } else {
     conn = new Sequelize(dbConfig);
