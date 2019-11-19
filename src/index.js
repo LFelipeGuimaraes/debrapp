@@ -8,6 +8,9 @@ const error = require('./middlewares/error');
 
 const app = express();
 
+console.log('AAAAAAAAAA', process.env.NODE_ENV);
+console.log(process.env.DATABASE_URL);
+
 app.use(express.json());
 app.use(cors());
 app.use(routes);

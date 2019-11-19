@@ -11,9 +11,7 @@ module.exports = {
 
     async index(req, res) {
         const schools = await School.findAll();
-        console.log('AAAAAAAAAA', process.env.NODE_ENV);
-        console.log(process.env.DATABASE_URL);
-
+        
         return res.json(schools);
     }
 }
