@@ -1,4 +1,4 @@
-require('custom-env').env(true);
+// require('custom-env').env(true);
 require('express-async-errors');
 require('./database');
 const express = require('express');
