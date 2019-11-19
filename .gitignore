@@ -1,0 +1,4 @@
+.env.develop
+.env
+node_modules/
+docker/*
