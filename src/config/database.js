@@ -13,5 +13,3 @@ module.exports = {
         underscored: true,
     },
 };
-
-postgres://jamwzcqfgaoagp:23c65ac5c32e77280064ca03cb3f3a230208650a958b326de460f3078342516a@ec2-54-227-249-108.compute-1.amazonaws.com:5432/dcf2hmbgls3v7s
