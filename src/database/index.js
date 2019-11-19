@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
 let conn = null;
 
-if (process.env.NODE_ENV == 'production') {
+if (process.env.NODE_ENV === 'production') {
     console.log('alo');
     conn = new Sequelize(process.env.DATABASE_URL, {
         dialect: 'postgres',
