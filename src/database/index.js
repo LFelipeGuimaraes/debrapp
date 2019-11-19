@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
-let conn;
+let conn = null;
 
 if (process.env.NODE_ENV == 'production') {
     console.log('alo');
