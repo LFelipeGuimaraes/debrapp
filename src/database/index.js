@@ -1,18 +1,7 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
-let conn = null;
 
-const url = process.env.DATABASE_URL;
-
-if (process.env.NODE_ENV === 'production') {
-    conn = new Sequelize(url, {
-        dialect: 'postgres',
-        protocol: 'postgres'
-    });
-} else {
-    conn = new Sequelize(dbConfig);
-}
-
+const conn = new Sequelize(dbConfig);
 
 // models
 const Student = require('../models/Student');
