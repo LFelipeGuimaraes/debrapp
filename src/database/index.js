@@ -8,6 +8,9 @@ const conn = new Sequelize(dbConfig, {
         timestamps: true,
         underscored: true,
     },
+    dialectOptions: {
+        ssl: true
+    }
 });
 
 // models
