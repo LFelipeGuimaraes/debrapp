@@ -17,7 +17,7 @@ module.exports = {
           allowNull: false,
         },
         category: {
-          type: Sequelize.ENUM(categories),
+          type: Sequelize.STRING,
           allowNull: false,
         },
         student_id: {

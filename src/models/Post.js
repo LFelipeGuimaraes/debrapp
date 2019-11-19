@@ -5,7 +5,7 @@ class Post extends Model {
     static init(sequelize) {
         super.init({
             content: DataTypes.STRING,
-            category: DataTypes.ENUM(categories),
+            category: DataTypes.STRING,
         }, { sequelize })
     }
 
