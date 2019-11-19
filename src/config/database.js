@@ -15,5 +15,5 @@ const node_env = process.env.NODE_ENV
 // };
 
 module.exports = {
-    'use_env_variable': "DATABASE_URL"
+    'use_env_variable': "DATABASE_URL",
 }
