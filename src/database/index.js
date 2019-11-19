@@ -1,7 +1,14 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
 
-const conn = new Sequelize(dbConfig);
+const conn = new Sequelize(dbConfig, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    define: {
+        timestamps: true,
+        underscored: true,
+    },
+});
 
 // models
 const Student = require('../models/Student');
