@@ -1,7 +1,16 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
+let conn;
 
-const conn = new Sequelize(dbConfig);
+if (process.env.DATABASE_URL) {
+    conn = new Sequelize(process.env.DATABASE_URL, {
+        dialect: 'postgres',
+        protocol: 'psotgres'
+    });
+} else {
+    conn = new Sequelize(dbConfig);
+}
+
 
 // models
 const Student = require('../models/Student');
