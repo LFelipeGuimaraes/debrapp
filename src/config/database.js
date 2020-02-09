@@ -7,7 +7,7 @@ module.exports = {
     port: process.env.DB_PORT || 5432,
     username: process.env.POSTGRES_USER || 'jamwzcqfgaoagp',
     password: process.env.POSTGRES_PASSWORD || '23c65ac5c32e77280064ca03cb3f3a230208650a958b326de460f3078342516a',
-    database: 'dcf2hmbgls3v7s',
+    database: process.env.DB_NAME || 'dcf2hmbgls3v7s',
     define: {
         timestamps: true,
         underscored: true,
