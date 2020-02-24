@@ -22,7 +22,7 @@ module.exports = {
 
         const token = user.generateAuthToken();
 
-        res.status(201).send(token);
+        res.json(token);
     },
 
     async show(req, res) {
