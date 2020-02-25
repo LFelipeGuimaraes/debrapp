@@ -19,6 +19,6 @@ module.exports = {
 
         const token = user.generateAuthToken();
 
-        res.send(token);
+        res.json(token);
     }
 }
