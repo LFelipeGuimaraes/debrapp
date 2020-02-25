@@ -3,6 +3,8 @@ const dbConfig = require('../config/database');
 
 const conn = new Sequelize(dbConfig);
 
+console.log('AAAA ', dbConfig);
+
 // models
 const UserSchools = require('../models/UserSchools');
 const Student = require('../models/Student');
