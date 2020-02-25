@@ -5,9 +5,9 @@ module.exports = {
     dialect: 'postgres',
     host: process.env.DB_HOST || 'ec2-184-72-235-159.compute-1.amazonaws.com',
     port: process.env.DB_PORT || 5432,
-    username: process.env.POSTGRES_USER || 'xhrotatryfzirg',
-    password: process.env.POSTGRES_PASSWORD || 'a98dd73fae4b60ad527ed8f8a85a87ccb5d882349c64ea61920ecc6e0c5f6bb0',
-    database: process.env.DB_NAME || 'df89ln4n2j55it',
+    username: process.env.POSTGRES_USER || 'danpdbwlzkbidp',
+    password: process.env.POSTGRES_PASSWORD || 'd4860f584e47cde8221044bd5f4ed36899e638e043e8b39237582dccff3d877e',
+    database: process.env.DB_NAME || 'dfrpnssas12p8',
     define: {
         timestamps: true,
         underscored: true,
