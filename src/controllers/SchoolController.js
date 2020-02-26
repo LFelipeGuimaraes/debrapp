@@ -1,6 +1,5 @@
 const School = require('../models/School');
 const User = require('../models/User');
-const UserSchools = require('../models/UserSchools');
 const random = require('crypto-random-string');
 
 module.exports = {
@@ -24,7 +23,7 @@ module.exports = {
         const user = await User.findByPk(id, {
             include: { 
                 association: 'schools',
-                attributes: ['name', 'city', 'state', 'code'],
+                attributes: ['id', 'name', 'city', 'state', 'code'],
                 through: {
                     as: 'user_school',
                     attributes: ['isManager'],

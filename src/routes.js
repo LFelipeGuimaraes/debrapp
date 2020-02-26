@@ -35,6 +35,7 @@ routes.param('school_id', authSchool);
 // Classes
 routes.get('/schools/:school_id/classes', ClassController.index);
 routes.post('/schools/:school_id/classes', checkManager, ClassController.store);
+routes.delete('/schools/:school_id/classes/:class_id', checkManager, ClassController.delete);
 
 // Students
 routes.post('/schools/:school_id/students', checkManager, StudentController.store);

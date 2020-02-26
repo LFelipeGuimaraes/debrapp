@@ -70,5 +70,18 @@ module.exports = {
         }
 
         return res.json(student.posts);
+    },
+
+    async delete(req, res) {
+        const { class_id } = req.params;
+
+        let _class = await Class.findByPk(class_id);
+        
+        if (_class) {
+            await _class.destroy();
+            return res.json(_class);
+        } else {
+            return res.status(404).json({ error: 'Class not found' })
+        }
     }
 }

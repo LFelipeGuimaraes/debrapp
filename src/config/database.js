@@ -12,7 +12,4 @@ module.exports = {
         timestamps: true,
         underscored: true,
     },
-    dialectOptions: {
-        ssl: true,
-    }
 };
