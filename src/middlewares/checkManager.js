@@ -14,7 +14,7 @@ module.exports = async function(req, res, next) {
     })
 
     if (!user_school.isManager) {
-        res.status(403).send('Access denied. This operation can only be executed by the school manager.')
+        return res.status(403).send('Access denied. This operation can only be executed by the school manager.')
     }
 
     next();
