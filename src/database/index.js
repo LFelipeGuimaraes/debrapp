@@ -1,7 +1,10 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('../config/database');
 
-const conn = new Sequelize(dbConfig);
+const node_env = process.env.NODE_ENV;
+require('custom-env').env(node_env);
+
+const conn = new Sequelize(process.env.DATABASE_URL, dbConfig);
 
 // models
 const UserSchools = require('../models/UserSchools');
