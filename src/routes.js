@@ -29,6 +29,7 @@ routes.post('/users/me/schools', UserController.addSchool);
 // Schools
 routes.post('/schools', SchoolController.store);
 routes.get('/schools', SchoolController.index);
+routes.delete('/schools/:school_id', checkManager, SchoolController.delete);
 
 // Require authorization to access the routes from a specified school
 routes.param('school_id', authSchool);
@@ -41,11 +42,13 @@ routes.delete('/schools/:school_id/classes/:class_id', checkManager, ClassContro
 routes.post('/schools/:school_id/students', checkManager, StudentController.store);
 routes.get('/schools/:school_id/students', StudentController.index);
 routes.get('/schools/:school_id/students/:student_id', StudentController.show);
+routes.delete('/schools/:school_id/students/:student_id', checkManager, StudentController.delete);
 
 // Posts
 routes.post('/schools/:school_id/students/:student_id/posts', PostController.store);
 routes.get('/schools/:school_id/students/:student_id/posts', PostController.index);
 routes.get('/schools/:school_id/students/:student_id/posts/:category', PostController.indexByCategory);
+routes.delete('/schools/:school_id/students/:student_id/posts/:post_id', PostController.delete);
 
 
 module.exports = routes;

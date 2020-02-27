@@ -36,5 +36,20 @@ module.exports = {
         }
 
         res.json(user.schools);
+    },
+
+    async delete(req, res) {
+        const { school_id } = req.params;
+
+        let school = await School.findByPk(school_id);
+
+        if (!school) {
+            return res.status(404).json({ error: 'School not found' })
+        } else {
+            await school.destroy();
+            return res.json(school);
+        }
     }
+
+    
 }

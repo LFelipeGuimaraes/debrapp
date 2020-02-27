@@ -73,15 +73,21 @@ module.exports = {
     },
 
     async delete(req, res) {
-        const { class_id } = req.params;
+        const { school_id, student_id, post_id } = req.params;
 
-        let _class = await Class.findByPk(class_id);
-        
-        if (_class) {
-            await _class.destroy();
-            return res.json(_class);
+        let post = await Post.findByPk(post_id, {
+            include: { association: 'student' }
+        });
+
+        if (!post) {
+            return res.status(404).json({ error: 'Post not found' })
+        } else if (post['student_id'] != student_id) {
+            return res.status(400).json({ error: 'Post does not belong to this student' });
+        } else if (post['student']['school_id'] != school_id) {
+            return res.status(400).json({ error: 'Student does not belong to this school' });
         } else {
-            return res.status(404).json({ error: 'Class not found' })
+            await post.destroy();
+            return res.json(post);
         }
     }
 }

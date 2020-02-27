@@ -48,5 +48,20 @@ module.exports = {
         }
 
         return res.json(student);
+    },
+
+    async delete(req, res) {
+        const { school_id, student_id } = req.params;
+
+        let student = await Student.findByPk(student_id);
+
+        if (!student) {
+            return res.status(404).json({ error: 'Student not found' })
+        } else if (student['school_id'] != school_id) {
+            return res.status(400).json({ error: 'Student does not belong to this school' });
+        } else {
+            await student.destroy();
+            return res.json(student);
+        }
     }
 }
