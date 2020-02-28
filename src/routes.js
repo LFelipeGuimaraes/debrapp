@@ -30,6 +30,7 @@ routes.post('/users/me/schools', UserController.addSchool);
 routes.post('/schools', SchoolController.store);
 routes.get('/schools', SchoolController.index);
 routes.delete('/schools/:school_id', checkManager, SchoolController.delete);
+routes.put('/schools/:school_id', checkManager, SchoolController.update);
 
 // Require authorization to access the routes from a specified school
 routes.param('school_id', authSchool);
@@ -43,6 +44,7 @@ routes.post('/schools/:school_id/students', checkManager, StudentController.stor
 routes.get('/schools/:school_id/students', StudentController.index);
 routes.get('/schools/:school_id/students/:student_id', StudentController.show);
 routes.delete('/schools/:school_id/students/:student_id', checkManager, StudentController.delete);
+routes.put('/schools/:school_id/students/:student_id', checkManager, StudentController.update);
 
 // Posts
 routes.post('/schools/:school_id/students/:student_id/posts', PostController.store);

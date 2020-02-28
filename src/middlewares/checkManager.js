@@ -11,10 +11,12 @@ module.exports = async function(req, res, next) {
             user_id: id,
             school_id: school_id,
         }
-    })
+    });
 
-    if (!user_school.isManager) {
-        return res.status(403).send('Access denied. This operation can only be executed by the school manager.')
+    if (!user_school) {
+        return res.status(404).send({ error: 'School not found' });
+    } else if (!user_school.isManager) {
+        return res.status(403).send({ error: 'Access denied. This operation can only be executed by the school manager.' })
     }
 
     next();

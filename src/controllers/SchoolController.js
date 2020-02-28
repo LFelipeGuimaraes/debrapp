@@ -38,6 +38,26 @@ module.exports = {
         res.json(user.schools);
     },
 
+    async update(req, res) {
+        const { school_id } = req.params;
+        const body = req.body;
+
+        const updateQuery = await School.update(body, {
+            returning: true,
+            where: {
+                id: school_id,
+            },
+        });
+
+        const [ rowsUpdate, [ updatedSchool ] ] = updateQuery;
+
+        if (rowsUpdate == 0) {
+            return res.status(404).json({ error: 'School not found' });
+        }
+
+        return res.json(updatedSchool);
+    },
+
     async delete(req, res) {
         const { school_id } = req.params;
 

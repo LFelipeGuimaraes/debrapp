@@ -50,6 +50,27 @@ module.exports = {
         return res.json(student);
     },
 
+    async update(req, res) {
+        const { school_id, student_id } = req.params;
+        const body = req.body;
+
+        const updateQuery = await Student.update(body, {
+            returning: true,
+            where: {
+                id: student_id,
+                school_id: school_id,
+            },
+        });
+
+        const [ rowsUpdate, [ updatedSchool ] ] = updateQuery;
+
+        if (rowsUpdate == 0) {
+            return res.status(404).json({ error: 'Student not found or does not belong to this school' });
+        }
+
+        return res.json(updatedSchool);
+    },
+
     async delete(req, res) {
         const { school_id, student_id } = req.params;
 
