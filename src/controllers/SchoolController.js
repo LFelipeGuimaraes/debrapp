@@ -1,5 +1,6 @@
 const School = require('../models/School');
 const User = require('../models/User');
+const UserSchools = require('../models/UserSchools')
 const random = require('crypto-random-string');
 
 module.exports = {
@@ -27,6 +28,13 @@ module.exports = {
                 through: {
                     as: 'user_school',
                     attributes: ['isManager'],
+                },
+                include: {
+                    association: 'users',
+                    attributes: ['name'],
+                    through: {
+                        attributes: [],
+                    }
                 }
             }
         });
