@@ -15,6 +15,7 @@ class User extends Model {
 
     static associate(models) {
         this.belongsToMany(models.School, { foreignKey: 'user_id', through: UserSchools, as: 'schools' });
+        this.hasMany(models.Post, { foreignKey: 'user_id', as: 'posts' });
     }
 
     generateAuthToken() {

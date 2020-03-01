@@ -1,6 +1,10 @@
 const path = require('path');
 
+const node_env = process.env.NODE_ENV;
+require('custom-env').env(node_env);
+
 module.exports = {
     config: path.resolve(__dirname, 'src', 'config', 'database.js'),
+    'url': process.env.DATABASE_URL,
     'migrations-path': path.resolve(__dirname, 'src', 'database', 'migrations'),
 };

@@ -1,5 +1,6 @@
 const Student = require('../models/Student');
 const Post = require('../models/Post');
+const User = require('../models/User');
 const categories = require('../config/categories');
 
 module.exports = {
@@ -7,22 +8,26 @@ module.exports = {
         const { content } = req.body;
         let { category } = req.body;
         const { student_id, school_id } = req.params;
+        const user_id = req.user.id;
 
         category = category.toLowerCase();
 
         const student = await Student.findByPk(student_id);
-
+        
         if (!categories.includes(category)) {
             return res.status(400).json({ error: `Category must be one of these values: [${categories}]` });
         }
-
+        
         if (!student) {
             return res.status(404).json({ error: 'Student not found' });
         } else if (student['school_id'] != school_id) {
             return res.status(400).json({ error: 'Student does not belong to this school' });
         }
-
-        const post = await Post.create({ content, category, student_id });
+        
+        const post = await Post.create({ content, category, student_id, user_id });
+        
+        const user = await User.findByPk(user_id);
+        await user.addPost(post);
 
         return res.json(post);
     },
@@ -31,7 +36,13 @@ module.exports = {
         const { student_id, school_id } = req.params;
 
         const student = await Student.findByPk(student_id, {
-            include: { association: 'posts' }
+            include: { 
+                association: 'posts',
+                include: {
+                    association: 'author',
+                    attributes: ['name']
+                }
+            }
         });
 
         if (!student) {
@@ -62,7 +73,14 @@ module.exports = {
         }
 
         student = await Student.findByPk(student_id, {
-            include: { association: 'posts', where: { category } }
+            include: { 
+                association: 'posts',
+                where: { category },
+                include: {
+                    association: 'author',
+                    attributes: ['name']
+                }
+            }
         });
 
         if (!student) {
