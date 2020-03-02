@@ -35,8 +35,11 @@ module.exports = {
                     through: {
                         attributes: [],
                     }
-                }
-            }
+                },
+            },
+            order: [
+                ['schools', 'name', 'ASC']
+            ]
         });
 
         if (!user) {

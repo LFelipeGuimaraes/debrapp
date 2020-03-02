@@ -25,7 +25,11 @@ module.exports = {
         const { school_id } = req.params;
 
         const school = await School.findByPk(school_id, {
-            include: { association: 'classes' }
+            include: { association: 'classes'},
+            order: [
+                ['classes', 'year', 'ASC'],
+                ['classes', 'letter', 'ASC'],
+            ]
         });
 
         if (!school) {

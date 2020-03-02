@@ -41,8 +41,11 @@ module.exports = {
                 include: {
                     association: 'author',
                     attributes: ['name']
-                }
-            }
+                },
+            },
+            order: [
+                ['posts', 'created_at', 'DESC']
+            ]
         });
 
         if (!student) {
@@ -79,8 +82,11 @@ module.exports = {
                 include: {
                     association: 'author',
                     attributes: ['name']
-                }
-            }
+                },
+            },
+            order: [
+                ['posts', 'created_at', 'ASC']
+            ]
         });
 
         if (!student) {
